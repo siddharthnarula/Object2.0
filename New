@@ -1,0 +1,184 @@
+import pandas as pd
+print("Welcome to Inventory Management System of IOCL")
+print('Enter a choice below')
+print('If you are a Employee press 1')
+print('If you are not a Employee press 0')
+x=int(input("Enter Your Option:"))
+
+if x==1:
+
+    variable_a = pd.read_csv("C:/Users/HP/Documents/Book1.csv", index_col=None)
+    X = variable_a.iloc[:, 0:1].values
+    xx = int(input("Enter the User id: "))
+    if xx in X:
+        index = list(X).index(xx)
+        print("Use Found: \n", variable_a.iloc[index])
+
+    else:
+        print("User Not Found")
+        import csv
+
+        print("Add your details")
+        my_list = []
+        my_list.append(input("Enter the User Id: "))
+        my_list.append(input("Enter the name: "))
+        my_list.append(input("Enter Age: "))
+        my_list.append(input("Enter Gender: "))
+        my_list.append('IOCL')
+        my_list.append(input("Enter Department: "))
+        my_list.append(input("Enter Grade: "))
+        with open('C:/Users/HP/Documents/Book1.csv', 'a') as csvFile:
+            writer = csv.writer(csvFile)
+            writer.writerow(my_list)
+        print("Files Written")
+        csvFile.close()
+    print("How may I help you")
+    print("Delete a Record press 0")
+    print("Have some issues in your PC press 1")
+    print("Have some issues with your Printer press 2")
+    print("Have some issues in your Keyboard press 3")
+    print("Have some issues in your Mouse press 4")
+    print("To update a giving record press 5")
+    y=int(input("Enter Your Option:"))
+    if y==0:
+        abc = pd.read_csv("C:/Users/HP/Documents/Book1.csv", index_col=None)
+        print(abc.head())
+        e = int(input("ENTER the column number you want to delete"))
+        abc.drop(e, axis=0, inplace= True)
+        print("Record Deleted :")
+        print(abc.head())
+        abc.to_csv("C:/Users/HP/Documents/Book2.csv")
+    elif y==1:
+        print("To register your PC press 0")
+        print("To see the PC details press 1")
+        z = int(input("Enter Your Option: "))
+        if z==0:
+            print("Add your details")
+            PC = []
+            PC.append(input("Enter the Make of your PC: "))
+            PC.append(input("Enter the Model: "))
+            PC.append(input("Enter RAM details: "))
+            PC.append(input("Enter OS Name: "))
+            PC.append(input("Enter Hard Drive Size: "))
+            PC.append(input("Enter Defects is any if no enter NULL: "))
+            PC.append(input("Enter Software requirments if any if no enter NULL: "))
+            import csv
+
+            with open('C:/Users/HP/Documents/pc.csv', 'a') as csvFile:
+                writer = csv.writer(csvFile)
+                writer.writerow(PC)
+            csvFile.close()
+            print("Data Entered")
+            print("Thank you User", variable_a.UserId, "For your valuable input we will look into the errors")
+            print("Enterd Detials are:")
+            variable_b = pd.read_csv("C:/Users/HP/Documents/pc.csv", index_col=None)
+            print(variable_b)
+        else:
+            variable_b = pd.read_csv("C:/Users/HP/Documents/pc.csv", index_col=None)
+            print(variable_b)
+
+    elif y==2:
+        print("To register your Printer press 0")
+        print("To see the Printer details press 1")
+        z = int(input("Enter Your Option: "))
+        if z == 0:
+            print("Add your details")
+            PR = []
+            PR.append(input("Enter the Make of your Printer: "))
+            PR.append(input("Enter the Model: "))
+            w=int(input("If your printer is Black and white press 0 else press 1"))
+            if w==1:
+                PR.append('Coloured')
+            elif w==0:
+                PR.append('Mono')
+            import csv
+
+            with open('C:/Users/HP/Documents/pr.csv', 'a') as csvFile:
+                writer = csv.writer(csvFile)
+                writer.writerow(PR)
+            csvFile.close()
+            print("Data Entered")
+            print("Enterd Detials are:")
+            variable_c = pd.read_csv("C:/Users/HP/Documents/pr.csv", index_col=None)
+            print(variable_c)
+        else:
+            variable_c = pd.read_csv("C:/Users/HP/Documents/pr.csv", index_col=None)
+            print(variable_c)
+
+    elif y==3:
+        print("To register your Keyboard press 0")
+        print("To see the Keyboard details press 1")
+        z = int(input("Enter Your Option: "))
+        if z == 0:
+            print("Add your details")
+            KY = []
+            KY.append(input("Enter the Make of your Keyboard: "))
+            KY.append(input("Enter the Model: "))
+            KY.append(input("Enter the Serial Number: "))
+            import csv
+
+            with open('C:/Users/HP/Documents/ky.csv', 'a') as csvFile:
+                writer = csv.writer(csvFile)
+                writer.writerow(KY)
+            csvFile.close()
+            print("Data Entered")
+            print("Enterd Detials are:")
+            variable_d = pd.read_csv("C:/Users/HP/Documents/ky.csv", index_col=None)
+            print(variable_d)
+        else:
+            variable_d = pd.read_csv("C:/Users/HP/Documents/ky.csv", index_col=None)
+            print(variable_d)
+    elif y==5:
+        abcd = pd.read_csv("C:/Users/HP/Documents/Book1.csv", index_col=None)
+        df = {}
+        df = abcd
+        print(df)
+        q = input("Enter the column that is to be updated")
+        variable_old = input("Enter the Old Value: ")
+        variable_new = input("Enter the New Value: ")
+        df[q].replace(variable_old, variable_new,inplace= True)
+        print(df)
+    elif y==4:
+        print("To register your Mouse press 0")
+        print("To see the Mouse details press 1")
+        z = int(input("Enter Your Option: "))
+        if z == 0:
+            print("Add your details")
+            MO = []
+            MO.append(input("Enter the Make of your Mouse: "))
+            MO.append(input("Enter the Model: "))
+            MO.append(input("Enter the Serial Number: "))
+            import csv
+
+            with open('C:/Users/HP/Documents/mo.csv', 'a') as csvFile:
+                writer = csv.writer(csvFile)
+                writer.writerow(MO)
+            csvFile.close()
+            print("Data Entered")
+            print("Enterd Detials are:")
+            variable_e = pd.read_csv("C:/Users/HP/Documents/mo.csv", index_col=None)
+            print(variable_e)
+        else:
+            variable_e = pd.read_csv("C:/Users/HP/Documents/mo.csv", index_col=None)
+            print(variable_e)
+    else:
+        print("Enter the correct option")
+elif x==0:
+    import csv
+    print("Add your details")
+    my_list=[]
+    my_list.append(input("Enter the User Id: "))
+    my_list.append(input("Enter the name: "))
+    my_list.append(input("Enter Age: "))
+    my_list.append(input("Enter Gender: "))
+    my_list.append('IOCL')
+    my_list.append(input("Enter Department: "))
+    my_list.append(input("Enter Grade: "))
+    with open('C:/Users/HP/Documents/Book1.csv', 'a') as csvFile:
+        writer = csv.writer(csvFile)
+        writer.writerow(my_list)
+    print("Files Written")
+    csvFile.close()
+
+
+
